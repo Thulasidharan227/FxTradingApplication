@@ -1,7 +1,13 @@
 package com.fxtrading.FxTradingApplication.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+@Entity
 public class Print {
-
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int tradeNo;
 	private String currencyPair;
 	private String customerName;
@@ -42,13 +48,14 @@ public class Print {
 		return "Print [tradeNo=" + tradeNo + ", currencyPair=" + currencyPair + ", customerName=" + customerName
 				+ ", inrAmount=" + inrAmount + ", rate=" + rate + "]";
 	}
-	public Print(int tradeNo, String currencyPair, String customerName, double inrAmount, double rate) {
+	public Print(String currencyPair, String customerName, double inrAmount, double rate) {
 		super();
-		this.tradeNo = tradeNo;
 		this.currencyPair = currencyPair;
 		this.customerName = customerName;
 		this.inrAmount = inrAmount;
 		this.rate = rate;
+	}
+	public Print() {
 	}
 	
 }

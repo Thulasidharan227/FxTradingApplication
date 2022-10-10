@@ -5,7 +5,6 @@ public class Book {
 	private String customerName;
 	private double tranferAmount;
 	public String rate;
-	
 	public String getCurrencyPair() {
 		return currencyPair;
 	}
@@ -30,12 +29,14 @@ public class Book {
 	public void setRate(String rate) {
 		this.rate = rate;
 	}
-
 	@Override
 	public String toString() {
 		return "Book [currencyPair=" + currencyPair + ", customerName=" + customerName + ", tranferAmount="
-				+ tranferAmount + ", rate=" + rate  + "]";
+				+ tranferAmount + ", rate=" + rate + "]";
 	}
+	
+	
+
 		
 	
 

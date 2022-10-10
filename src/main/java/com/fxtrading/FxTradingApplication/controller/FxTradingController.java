@@ -1,13 +1,12 @@
 package com.fxtrading.FxTradingApplication.controller;
+import java.util.List;
 
-import java.util.ArrayList;
-
-import com.fxtrading.FxTradingApplication.dao.PrintDao;
 import com.fxtrading.FxTradingApplication.entity.Book;
 import com.fxtrading.FxTradingApplication.entity.Print;
-import com.fxtrading.FxTradingApplication.service.FxTradingService;
+import com.fxtrading.FxTradingApplication.service.TradingService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,13 +14,13 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
+@CrossOrigin(origins="http://localhost:4200")
 @RestController
 public class FxTradingController {
 	@Autowired
-	FxTradingService fxTradingService;
-	@Autowired
-	PrintDao printDao;
+	TradingService fxTradingService ;
+
+
 	
 	String message = "localhost:8080/booktrade/book - use this url to book trade \n localhost:8080/printtrade - use this  url to print trade \n localhost:8080/exit/yes - use this url to exit ";
 
@@ -31,25 +30,20 @@ public class FxTradingController {
 		
 	}
 	
-	@PostMapping("booktrade/{bookingconfirmation}")
-	public String bookTrade(@RequestBody Book bookingDetails, @PathVariable String bookingconfirmation) {
-		return fxTradingService.bookTrade(bookingDetails, bookingconfirmation);
-		
+	@PostMapping("booktrade")
+	public String bookTrade(@RequestBody Book value) {
+		return fxTradingService.Booking(value);
 	}
 	@GetMapping("printtrade")
-	public ArrayList<Print> printTrading() {
+	public List<Print> printTrading() {
 		
-		return printDao.printTrading();
+		return fxTradingService.printing();
 	}
 	
 	@PutMapping("exit/{confirm}")
 	public String Exit(@PathVariable String confirm) {
 		
-		if(confirm.equalsIgnoreCase("yes"))
-			return "bye have a nice day";
-		else if(confirm.equalsIgnoreCase("no"))
-			return message;
-		return null;
+		return "bye";
 		
 		
 		
