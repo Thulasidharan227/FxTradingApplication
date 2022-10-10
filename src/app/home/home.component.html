@@ -1,0 +1,19 @@
+
+<div class="form-control">
+
+
+<form class="col-sm-6" style="text-align: center; margin-left: 23%; margin-top: 10%;">
+    <h1 style="color:whitesmoke;"><u>Home</u></h1>
+    <hr style="color:white">
+<div class="col-sm-6" style="margin-left:120px;">
+<button type ="button" class="btn btn-primary " routerLink="/book">Book</button>
+<button type="button" class="btn btn-warning" style="margin-left: 20px;" routerLink="/print">Print</button>
+<button type="button" class="btn btn-danger " style="margin-left: 20px;" (click)="popuppage()">Exit</button>
+</div>
+<div class="popuppage" id="popup">
+    <h5>Are you sure?</h5>
+    <button class="btn btn-danger" routerLink="/exit">Exit</button>
+    <button class="btn btn-primary" (click)="closepopup()" style="margin-left: 5px;">cancel</button>
+   </div>
+</form>
+</div>
